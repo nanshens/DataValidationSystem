@@ -5,3 +5,7 @@ from .base import Base
 
 class Validator(Base):
     pass
+
+    def to_dict(self):
+        dicts = super().to_dict()
+        return dicts

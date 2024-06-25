@@ -20,7 +20,6 @@ class AttributeType(Enum):
 class ValidationRuleType(Enum):
     Length = "length"
     Unique = "unique"
-    Repeat = "repeat"
     Relate = "relate"
     Collection = "collection"
     NotNull = "not_null"

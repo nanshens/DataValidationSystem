@@ -12,3 +12,7 @@ class Base(db.Model):
     active: Mapped[bool] = mapped_column(default=True)
     code: Mapped[str] = mapped_column()
     name: Mapped[str]
+
+
+    def to_dict(self):
+        return {"id": self.id, "active": self.active, "code": self.code, "name": self.name}
