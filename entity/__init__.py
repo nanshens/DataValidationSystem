@@ -4,8 +4,6 @@ db = SQLAlchemy()
 
 def register_models():
     from .validator import Validator
-    from .validation_rule import ValidationRule
-    from .repair_rule import RepairRule
     from .history import History
-    from .entity import Entity
-    from .attribute import Attribute
+    from .dict_value import DictValue
+    from .executor import Executor

@@ -11,7 +11,7 @@ class Base(db.Model):
     id: Mapped[str] = mapped_column(primary_key=True, default=generate_uuid)
     active: Mapped[bool] = mapped_column(default=True)
     code: Mapped[str] = mapped_column()
-    name: Mapped[str]
+    name: Mapped[str] = mapped_column(nullable=True)
 
 
     def to_dict(self):
