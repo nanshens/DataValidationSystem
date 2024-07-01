@@ -23,6 +23,7 @@ class ValidationRuleType(Enum):
     Relate = "relate"
     Collection = "collection"
     NotNull = "not_null"
+    Regexp = "regexp"
 
     @classmethod
     def all(self):

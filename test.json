@@ -1,0 +1,356 @@
+[
+  {
+    "id": "1",
+    "code": "item",
+    "name": "商品表",
+    "active": true,
+    "attributes": [
+      {
+        "id": "a1",
+        "code": "code",
+        "name": "编号",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      }
+    ]
+  },
+    {
+    "id": "2",
+    "code": "sales",
+    "name": "销售表",
+    "active": true,
+    "attributes": [
+      {
+        "id": "a1",
+        "code": "code",
+        "name": "编号",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      },
+      {
+        "id": "a2",
+        "code": "name",
+        "name": "名称",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      }
+    ]
+  },
+    {
+    "id": "3",
+    "code": "customer",
+    "name": "客户表表",
+    "active": true,
+    "attributes": [
+      {
+        "id": "a1",
+        "code": "code",
+        "name": "编号",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      },
+      {
+        "id": "a2",
+        "code": "phone",
+        "name": "电话",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      },
+      {
+        "id": "a3",
+        "code": "address",
+        "name": "住址",
+        "active": true,
+        "type": "string",
+        "repairRule": [
+          {
+            "id": "r1",
+            "code": "code",
+            "name": "编号修复",
+            "active": true,
+            "type": "string",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": ""
+          },
+          {
+            "id": "r2",
+            "code": "name",
+            "name": "name修复",
+            "active": true,
+            "type": "substring",
+            "isRegexpReplace": false,
+            "replaceStrs": "",
+            "replaceResult": "",
+            "substringFormat": "0,2"
+          }
+        ],
+        "validationRule": [
+          {
+            "id": "v1",
+            "code": "code",
+            "name": "code验证",
+            "active": true,
+            "type": "unique",
+            "length": 0,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          },
+          {
+            "id": "v2",
+            "code": "name",
+            "name": "name验证",
+            "active": true,
+            "type": "length",
+            "length": 10,
+            "relateEntity": "",
+            "relateAttribute": "",
+            "collection": []
+          }
+        ]
+      }
+    ]
+  }
+]
