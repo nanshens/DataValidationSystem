@@ -11,7 +11,6 @@ controller = Blueprint('controller', __name__)
 @controller.route("/validator/all", methods=["GET"])
 def get_all_validators():
     validators = Validator.query.filter_by(active=True).all()
-    # return Response.of_success(jsonify([validator.to_dict() for validator in validators]))
     return Response.of_success([validator.to_dict() for validator in validators])
 
 
@@ -24,10 +23,18 @@ def get_validator():
 @controller.route("/validator", methods=["POST"])
 def save_validator():
     data = request.get_json()
-    is_new = str(data['id']).startswith("NEW-")
-    validator = Validator.create_from_dto(data)
-    if is_new:
+    id = data['id']
+
+    if str(id).startswith("NEW-") :
+        validator = Validator.create_from_dto(data)
         db.session.add(validator)
+    else:
+        validator = Validator.query.get(id)
+        validator.active = data['active']
+        validator.code = data['code']
+        validator.name = data['name']
+        validator.config = data['config']
+
     db.session.commit()
     return Response.of_success(validator.to_dict(True))
 
