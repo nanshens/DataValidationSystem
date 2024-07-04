@@ -33,7 +33,7 @@ def save_validator():
         validator.active = data['active']
         validator.code = data['code']
         validator.name = data['name']
-        validator.config = data['config']
+        validator.entities = data['entities']
 
     db.session.commit()
     return Response.of_success(validator.to_dict(True))
@@ -74,11 +74,16 @@ def get_repair_rule():
     return "<p>Hello, World!</p>"
 
 
-@controller.route("/importvalidationdata", methods=["POST"])
-def import_validation_data():
+@controller.route("/upload/validation/file", methods=["POST"])
+def upload_validation_file():
     # todo: 生成文件备份
     # 记录时间
-    return "<p>Hello, World!</p>"
+    files = request.files.getlist('file')
+    for file in files:
+        if file and file.filename:
+            print(file.filename)
+
+    return Response.of_success(None)
 
 
 @controller.route("/executevalidator", methods=["POST"])

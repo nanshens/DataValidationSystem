@@ -14,7 +14,7 @@ class History(Base):
     download_file: Mapped[str] = mapped_column(nullable=True)
     repair_file: Mapped[str] = mapped_column(nullable=True)
     executor: Mapped[list] = mapped_column(JSON, nullable=True)
-    config: Mapped[list] = mapped_column(JSON, nullable=True)
+    entities: Mapped[list] = mapped_column(JSON, nullable=True)
     result: Mapped[list] = mapped_column(JSON, nullable=True)
 
     def to_dict(self):
