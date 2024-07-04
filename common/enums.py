@@ -9,7 +9,7 @@ class AttributeType(Enum):
     Date = "date"
     Time = "time"
     DateTime = "datetime"
-    TIMESTAMP = "timestamp"
+    TimeStamp = "timestamp"
     Json = "json"
 
     @classmethod
