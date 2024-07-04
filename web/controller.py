@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 
 from common.response import Response
 from entity import db
+from entity.executor import Executor
 from entity.validator import Validator
 from web.service import get_validator_info_by_id, copy_validator_service, generate_entity_info_service
 
@@ -54,6 +55,24 @@ def copy_validator():
     data = request.get_json()
     result = copy_validator_service(data)
     return Response.of_success(result)
+
+
+@controller.route("/executor", methods=["POST"])
+def save_executor():
+    data = request.get_json()
+    id = data['id']
+
+    if str(id).startswith("NEW-") :
+        executor = Executor.create_from_dto(data)
+        db.session.add(executor)
+    else:
+        executor = Executor.query.get(id)
+        executor.active = data['active']
+        executor.code = data['code']
+        executor.name = data['name']
+
+    db.session.commit()
+    return Response.of_success(executor.to_dict(True))
 
 
 @controller.route("/entityinfo/generate", methods=["POST"])
