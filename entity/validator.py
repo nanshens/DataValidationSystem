@@ -1,8 +1,6 @@
 import uuid
-
 from sqlalchemy import JSON
 from sqlalchemy.orm import Mapped, mapped_column
-
 from common.utils import Utils
 from . import db
 from .base import Base
@@ -14,7 +12,7 @@ from .base import Base
 # todo: 添加正则表达式 在validationrule 和repairrule中
 class Validator(Base):
     entities: Mapped[list] = mapped_column(JSON, nullable=True)
-
+    config: Mapped[list] = mapped_column(JSON, nullable=True)
 
     @staticmethod
     def create_from_dto(data):

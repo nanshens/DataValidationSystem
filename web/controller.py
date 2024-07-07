@@ -1,10 +1,12 @@
+import os
+
 from flask import Blueprint, request, jsonify
 
 from common.response import Response
 from entity import db
 from entity.executor import Executor
 from entity.validator import Validator
-from web.service import get_validator_info_by_id, copy_validator_service, generate_entity_info_service
+from web.service import get_validator_info_by_id, copy_validator_service, get_executor_by_id, generate_match_entity
 
 controller = Blueprint('controller', __name__)
 
@@ -57,6 +59,17 @@ def copy_validator():
     return Response.of_success(result)
 
 
+@controller.route("/executor/all", methods=["GET"])
+def get_all_executors():
+    executors = Executor.query.filter_by(active=True, validator_id=request.args.get('id')).all()
+    return Response.of_success([executor.to_dict() for executor in executors])
+
+
+@controller.route("/executor", methods=["GET"])
+def get_executor():
+    result = get_executor_by_id(request.args.get('id'))
+    return Response.of_success(result)
+
 @controller.route("/executor", methods=["POST"])
 def save_executor():
     data = request.get_json()
@@ -72,15 +85,15 @@ def save_executor():
         executor.name = data['name']
 
     db.session.commit()
-    return Response.of_success(executor.to_dict(True))
+    return Response.of_success(executor.to_dict())
 
 
-@controller.route("/entityinfo/generate", methods=["POST"])
+@controller.route("/executor/file/entities", methods=["POST"])
 def generate_entity_info():
     data = request.get_json()
     # todo: 读取xlsx, 或者csv 文件 生成实体属性信息
-    generate_entity_info_service(data)
-    return Response.of_success(None)
+    result = generate_match_entity(data['id'])
+    return Response.of_success(result)
 
 
 @controller.route("/attribute", methods=["GET"])
@@ -98,10 +111,14 @@ def upload_validation_file():
     # todo: 生成文件备份
     # 记录时间
     files = request.files.getlist('file')
+    data = request.get_json()
+    path = f"./data/{data['id']}/"
+    if not os.path.exists(path):
+        os.makedirs(path)
+
     for file in files:
         if file and file.filename:
-            print(file.filename)
-
+            file.save(os.path.join(path, file.filename))
     return Response.of_success(None)
 
 
