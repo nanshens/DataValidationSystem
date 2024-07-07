@@ -91,7 +91,7 @@ def save_executor():
 @controller.route("/executor/file/entities", methods=["POST"])
 def generate_entity_info():
     data = request.get_json()
-    # todo: 读取xlsx, 或者csv 文件 生成实体属性信息
+
     result = generate_match_entity(data['id'])
     return Response.of_success(result)
 

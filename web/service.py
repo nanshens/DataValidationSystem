@@ -20,5 +20,7 @@ def copy_validator_service(request):
     pass
 
 def generate_match_entity(id):
-    #  get by id, copy
+    # todo: 读取xlsx, 或者csv 文件 生成实体属性匹配信息
+    # todo: 1 自动匹配 返回结果, 手动填写, 保存.
+
     pass
