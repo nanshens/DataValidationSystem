@@ -3,6 +3,10 @@
 # todo: 生成结果 自动修改, 生成对比文件
 # todo  查看历史结果
 # todo: 导入文件有备份
+import os
+
+import pandas as pd
+
 from entity.executor import Executor
 from entity.validator import Validator
 
@@ -22,5 +26,19 @@ def copy_validator_service(request):
 def generate_match_entity(id):
     # todo: 读取xlsx, 或者csv 文件 生成实体属性匹配信息
     # todo: 1 自动匹配 返回结果, 手动填写, 保存.
+    executor = Executor.query.get(id)
+    path = f"./data/{id}/"
+    for filename in os.listdir(path):
+        file_path = os.path.join(path, filename)
 
-    pass
+        if filename.endswith('.csv'):
+            df = pd.read_csv(file_path)
+            headers = df.columns.tolist()
+            print(headers)
+
+        elif filename.endswith('.xlsx'):
+            xls = pd.ExcelFile(file_path)
+            for sheet_name in xls.sheet_names:
+                df = pd.read_excel(file_path, sheet_name=sheet_name)
+                headers = df.columns.tolist()
+                print(headers)

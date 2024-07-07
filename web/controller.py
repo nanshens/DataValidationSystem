@@ -111,8 +111,7 @@ def upload_validation_file():
     # todo: 生成文件备份
     # 记录时间
     files = request.files.getlist('file')
-    data = request.get_json()
-    path = f"./data/{data['id']}/"
+    path = f"./data/{request.form['id']}/"
     if not os.path.exists(path):
         os.makedirs(path)
 
