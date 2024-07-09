@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from flask import Blueprint, request, jsonify
@@ -80,12 +81,15 @@ def save_executor():
         db.session.add(executor)
     else:
         executor = Executor.query.get(id)
-        executor.active = data['active']
         executor.code = data['code']
         executor.name = data['name']
+        executor.match_entities = data['match_entities']
+        executor.config = data['config']
 
     db.session.commit()
-    return Response.of_success(executor.to_dict())
+    data = executor.to_dict()
+    data['validator'] = executor.validator.to_dict(True)
+    return Response.of_success(data)
 
 
 @controller.route("/executor/file/entities", methods=["POST"])
@@ -114,10 +118,14 @@ def upload_validation_file():
     path = f"./data/{request.form['id']}/"
     if not os.path.exists(path):
         os.makedirs(path)
+    executor = Executor.query.get(request.form['id'])
 
+    time = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     for file in files:
         if file and file.filename:
             file.save(os.path.join(path, file.filename))
+            executor.files.append({"name": file.filename, "upload_time": time})
+    db.session.commit()
     return Response.of_success(None)
 
 

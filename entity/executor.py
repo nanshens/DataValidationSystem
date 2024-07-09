@@ -12,11 +12,13 @@ class Executor(Base):
     validator_id: Mapped[str] = mapped_column(ForeignKey("validator.id"))
     match_entities: Mapped[list] = mapped_column(JSON, nullable=True)
     config: Mapped[list] = mapped_column(JSON, nullable=True)
+    files: Mapped[list] = mapped_column(JSON, nullable=True)
 
     @staticmethod
     def create_from_dto(data):
         executor = Executor(id=Utils.del_prefix(data['id']), active=data['active'], code=data['code'],name=data['name'],
-                            validator_id=data['validator_id'], match_entities=data['match_entities'], config=data['config'])
+                            validator_id=data['validator_id'], match_entities=data['match_entities'], config=data['config'],
+                            files=[])
         return executor
 
     def to_dict(self):
@@ -24,4 +26,5 @@ class Executor(Base):
         dicts['validator_id'] = self.validator_id
         dicts['match_entities'] = self.match_entities
         dicts['config'] = self.config
+        dicts['config'] = self.files
         return dicts
