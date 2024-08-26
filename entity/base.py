@@ -1,4 +1,6 @@
 import uuid
+from datetime import datetime
+
 from sqlalchemy.orm import Mapped, mapped_column
 from entity import db
 
@@ -12,7 +14,7 @@ class Base(db.Model):
     active: Mapped[bool] = mapped_column(default=True)
     code: Mapped[str] = mapped_column()
     name: Mapped[str] = mapped_column(nullable=True)
-
+    create_time: Mapped[datetime] = mapped_column(default=db.func.current_timestamp())
 
     def to_dict(self):
-        return {"id": self.id, "active": self.active, "code": self.code, "name": self.name}
+        return {"id": self.id, "active": self.active, "code": self.code, "name": self.name, 'create_time': self.create_time}

@@ -30,6 +30,7 @@ def save_validator():
     id = data['id']
 
     if str(id).startswith("NEW-") :
+        data['name'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         validator = Validator.create_from_dto(data)
         db.session.add(validator)
     else:
